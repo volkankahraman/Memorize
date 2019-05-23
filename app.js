@@ -6,7 +6,7 @@ var loginController = require(__dirname + '/Controllers/loginController.js');
 
 var app = express();
 
-
+app.set('views', './views');
 app.set('view engine','ejs');
 
 app.use(express.static(__dirname + '/Views'));
