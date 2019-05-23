@@ -1,0 +1,19 @@
+{
+  "name": "memorize",
+  "version": "1.0.0",
+  "description": "İngilizce sözcük ezberleme uygulaması",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "express-session": "^1.16.1",
+    "mongoose": "^5.5.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Volkan Kahraman",
+  "license": "ISC"
+}

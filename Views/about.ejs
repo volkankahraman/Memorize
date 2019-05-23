@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Memorize</title>
+</head>
+
+<body class="grey lighten-4">
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <span class="left">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+            <a class="brand-logo" href="/"> &nbsp;Memorize</a>
+
+
+        </div>
+    </nav>
+
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Menu</a></li>
+        <li><a href="/" class="waves-effect"><i class="material-icons">home</i>Anasayfa</a></li>
+        <li><a href="/about" class="waves-effect"><i class="material-icons">assignment</i>Hakkında</a></li>
+        <li><a href="" class="waves-effect"><i class="material-icons">backspace</i> Çıkış Yap</a></li>
+    </ul>
+    </div>
+    <div class="container grey-text text-darken-1">
+        <h4 class="subheader">Hakkında</h4>
+        <p> Memorize isimli bu proje, Yazılım Yapımı dönem projesi olarak Emin Boradağ'ın
+            isterlerine uygun olarak hazırlanmıştır.</p>
+        <h6>Projenin amacı ;</h6>
+        <p>kullanıcıların girdikleri sözcükleri 1 gün, 1 hafta, 3 ay ve 6 ay gibi zaman aralıklarıyla kullanıcıya
+            seçtiği sözcükleri tekrar sorarak öğrenmelerini sağlamaktır.</p>
+        <p> Sözcükler eklenirken sözcükler ile ilgili aşşağıdaki bilgiler gerekmektedir;
+            <ul>
+                <li>Sözcüğün İngilizce karşılığı</li>
+                <li>Sözcüğün Türkçe karşılığı</li>
+                <li>Sözcüğün tipi</li>
+                <li>Sözcüğün geçtiği cümle(opsiyonel)</li>
+            </ul>
+        </p>
+        <p>
+            Proje geliştirilirken <a href="https://materializecss.com/">Materialize Css</a> Framework'ü</p>
+        <p>
+            ve <a href="https://nodejs.org/">Node Js</a> Platformunun Express kütüphanesinden yararlanılmıştır.
+        </p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const menus = document.querySelectorAll('.side-menu');
+            M.Sidenav.init(menus, {
+                edge: 'left'
+            });
+
+        });
+    </script>
+</body>
+
+</html>

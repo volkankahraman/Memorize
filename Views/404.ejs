@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Memorize</title>
+</head>
+
+<body style="background-color: #176aeb !important">
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <span class="left">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+            <a class="brand-logo" href="/"> &nbsp;Memorize</a>
+
+
+        </div>
+    </nav>
+
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Menu</a></li>
+        <li><a href="/" class="waves-effect"><i class="material-icons">home</i>Anasayfa</a></li>
+        <li><a href="/about" class="waves-effect"><i class="material-icons">assignment</i>Hakkında</a></li>
+        <li><a href="" class="waves-effect"><i class="material-icons">backspace</i> Çıkış Yap</a></li>
+    </ul>
+    </div>
+    <div class="container white-text" >
+    <center>
+        <img src="https://media1.tenor.com/images/aae13b1b54443b81e593e6c835087716/tenor.gif?itemid=7878852" style="margin-top: 20px;width: 70%"/>
+
+        <h4 class="subheader" style="text-shadow: 2px 2px 5px #525252;">Aradığınız Sayfa bulunamadı !</h4>
+        <p> Aradığınız sayfayı bulamadık üzgünüz :/
+            Anasayfadan devam etmek için </p>
+            <a href="/" class="waves-effect waves-light btn-large title-color" style="width: 100%"><i class="material-icons left">home</i>Anasayfa</a>
+
+        </center>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const menus = document.querySelectorAll('.side-menu');
+            M.Sidenav.init(menus, {
+                edge: 'left'
+            });
+
+        });
+    </script>
+</body>
+
+</html>

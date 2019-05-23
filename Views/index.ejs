@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Memorize</title>
+</head>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large title-color modal-trigger" href="#modal1">
+        <i class="large material-icons">add</i>
+    </a>
+</div>
+
+<body class="grey lighten-4">
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <span class="left">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+            <a class="brand-logo" href="#"> &nbsp;Memorize</a>
+        </div>
+    </nav>
+    <center><h5> 
+            <%= (session.type == 1) ? "Yönetici olarak giriş yaptınız." : "Yetkisiz Giriş"; %></h5></center>
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Menu</a></li>
+        <li><a class="waves-effect"><i class="material-icons">home</i> Anasayfa</a></li>
+        <li><a href="/about" class="waves-effect"><i class="material-icons">assignment</i> Hakkında</a></li>
+        <li><a href="/logout" class="waves-effect"><i class="material-icons">backspace</i> Çıkış Yap</a></li>
+    </ul>
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content" style="padding: 0px;">
+            <form class="add-recipe container section">
+
+                <div class="input-field">
+                    <input placeholder="Orn. Book" id="englishWord" type="text" class="validate" required>
+                    <label for="englishWord">İngilizce Sözcük</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="Orn. Kitap" id="turkishWord" type="text" class="validate" required>
+                    <label for="turkishWord">Türkçe Sözcük</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="Orn. He is reading that book" id="sampleSentence" type="text" class="validate">
+                    <label for="sampleSentence">Cümle(Opsiyonel)</label>
+                </div>
+                <div class="input-field">
+                    <select id="type">
+                        <option value="" disabled selected><span style="color: gray">Sözcüğün Tipini Seçin:</span>
+                        </option>
+                        <option value="Noun">Noun</option>
+                        <option value="Verb">Verb</option>
+                        <option value="Adverb">Adverb</option>
+                        <option value="Pronoun">Pronoun</option>
+                        <option value="Preposition">Preposition</option>
+                        <option value="Conjunction">Conjunction</option>
+                    </select>
+                    <label>Sözcük Tipi</label>
+                </div>
+                <div class="input-field center">
+                    <button class="btn title-color" id="addWord">Sözcük Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="Words container grey-text text-darken-1">
+        <class class="row">
+            <% for(var i=0; i < data.length; i++){
+                %>
+            <div class="col s12 m6 l4">
+                <div class="card-panel word white">
+                    <div class="word-details">
+                        <div class="englishWord"><b>Sözcük :</b>
+                            <%= (data[i].englishWord != null) ? data[i].englishWord.charAt(0).toUpperCase()+ data[i].englishWord.slice(1) : '' %>
+                        </div>
+                        <div class="turkishWord hide"><%= (data[i].englishWord != null) ? data[i].turkishWord: ''  %><a
+                                class="btn-floating btn-large waves-effect waves-light title-color hide"
+                                id="turkishSpeech" onclick="read('<%= data[i].turkishWord %>','tr-TR')"><i
+                                    class="material-icons">play_arrow</i></a></div>
+                        <div class="type"><b>Tip :</b> <%= (data[i].englishWord != null) ? data[i].type: ''  %></div>
+                        <div class="sampleSentence"> <b>Cümle:
+                            </b><%- (data[i].englishWord != null) ? data[i].sentence: ''  %></div>
+                    </div>
+                    <a class="btn-floating btn-large waves-effect waves-light title-color"
+                        onclick="read('<%= data[i].englishWord %>','en-US')"><i
+                            class="material-icons">play_arrow</i></a>
+                    <a href="#" class="word-delete"  id="<%= data[i]._id%>">
+                        <i class="material-icons small" style="color: #ff3737;">delete_outline</i>
+                    </a>
+                </div>
+            </div>
+            <% } %>
+        </class>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script>
+        var pageCount = "<%=pageCount%>";
+    </script>
+</body>
+
+</html>

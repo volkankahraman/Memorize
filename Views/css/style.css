@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+
+.content-wrapper-before {
+  height: 200px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#42c2f4+9,3398ea+43,1c84ed+78 */
+  background: rgb(66, 194, 244);
+  /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(66, 194, 244, 1) 9%, rgba(51, 152, 234, 1) 43%, rgba(28, 132, 237, 1) 78%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(66, 194, 244, 1) 9%, rgba(51, 152, 234, 1) 43%, rgba(28, 132, 237, 1) 78%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(66, 194, 244, 1) 9%, rgba(51, 152, 234, 1) 43%, rgba(28, 132, 237, 1) 78%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#42c2f4', endColorstr='#1c84ed', GradientType=1);
+  /* IE6-9 */
+}
+
+h4,
+h5 {
+  font-family: 'Pacifico', cursive;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+.input-field input[type=date]:focus+label,
+.input-field input[type=text]:focus+label,
+.input-field input[type=email]:focus+label,
+.input-field input[type=password]:focus+label {
+  color: #e91e63;
+}
+
+.input-field input[type=date]:focus,
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus {
+  border-bottom: 2px solid #e91e63;
+  box-shadow: none;
+}
+
+@keyframes example {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes dissapear {
+  0% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    display: none !important;
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes dissapear-reverse {
+  0% {
+    display: block;
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+
+.rotate {
+  animation-name: dissapear;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.rotate-reverse {
+  animation-name: dissapear-reverse;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+:root{
+  --primary: #00a9f4;
+  --secondary: #007ac1;
+  --title: #0188d1;
+}
+
+/* layout styles */
+nav{
+  background: var(--primary)!important;
+  border-bottom: 7px solid var(--secondary)!important;
+}
+nav a{
+  color: var(--title);
+}
+nav .sidenav-trigger{
+  margin: 0;
+}
+
+/* recipe styles */
+.Words{
+  margin-top: 20px!important;
+}
+.card-panel.word{
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+  display: grid;
+  grid-template-columns: 2fr 6fr 1fr;
+  grid-template-areas: "image details delete";
+  position: relative;
+}
+.word img{
+  grid-area: image;
+  max-width: 60px;
+}
+.word-details{
+  grid-area: details;
+  margin-top: 6px;
+}
+.word-delete{
+  grid-area: delete;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+.word-delete i{
+  font-size: 18px;
+}
+.word-title{
+  font-weight: bold;
+}
+.word-ingredients{
+  font-size: 0.8em;
+}
+
+/* form-styles */
+.add-btn{
+  background: var(--title) !important;
+}
+input{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.side-form button{
+  background: var(--title);
+  box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
+}
+form .input-field{
+  margin-top: 30px;
+}
+
+.title-color{
+  background: var(--title) !important;
+}
