@@ -1,5 +1,5 @@
 var express = require('express');
-const port=3000;
+const port =process.env.PORT || 3000;
 var database = require(__dirname + '/database.js');
 var mainController = require(__dirname + '/Controllers/mainController.js');
 var loginController = require(__dirname + '/Controllers/loginController.js');
