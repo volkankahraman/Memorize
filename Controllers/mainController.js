@@ -34,23 +34,22 @@ module.exports = function (app) {
     
 
     app.get('/', function (req, res) {
-        res.send("aaa");
-        // req.session.email = "admin@admin.com";
-        // req.session.password = "admin";
-        // req.session.type = 1;
-        // if (req.session.email) {
-        //     Word.find({}, function (err, data) {
-        //         if (err) throw err;
-        //         //res.send(data);
-        //         res.render('index', {
-        //             data: data,
-        //             pageCount: req.session.pageCount,
-        //             session:req.session
-        //         });
-        //     });
-        // } else {
-        //     res.redirect('/login');
-        // }
+        req.session.email = "admin@admin.com";
+        req.session.password = "admin";
+        req.session.type = 1;
+        if (req.session.email) {
+            Word.find({}, function (err, data) {
+                if (err) throw err;
+                //res.send(data);
+                res.render('index', {
+                    data: data,
+                    pageCount: req.session.pageCount,
+                    session:req.session
+                });
+            });
+        } else {
+            res.redirect('/login');
+        }
         saveCount(req);
     });
     app.delete('/delete/:id', function(req,res){
