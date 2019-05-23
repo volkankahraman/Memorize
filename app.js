@@ -9,7 +9,7 @@ var app = express();
 
 app.set('view engine','ejs');
 
-app.use(express.static(__dirname + '/app/views'));
+app.use(express.static(__dirname + '/Views'));
 
 database();
 mainController(app);
