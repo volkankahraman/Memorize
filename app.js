@@ -1,5 +1,5 @@
 var express = require('express');
-const port = process.env.PORT;
+const port=3000;
 var database = require(__dirname + '/database.js');
 var mainController = require(__dirname + '/Controllers/mainController.js');
 var loginController = require(__dirname + '/Controllers/loginController.js');
@@ -17,5 +17,6 @@ loginController(app);
 app.use(function(req, res, next) {
     return res.render('404');
   });
-app.listen(port);
-console.log(port+"Portundan dinleniyor.");
+  app.listen(port,() => {
+    console.log(`Server running at port `+port);
+    });
