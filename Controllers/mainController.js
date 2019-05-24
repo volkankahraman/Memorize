@@ -2,6 +2,18 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
+var wordsToMemorizeSchema = new mongoose.Schema({
+    englishWord: String,
+    turkishWord: String,
+    type: String,
+    sentence: String,
+    userEmail: String,
+    target: String,
+    status: Number,
+    date: Date
+});
+
+var WordsToMemorize = mongoose.models.wordsToMemorize || mongoose.model('wordsToMemorize', wordsToMemorizeSchema);
 
 var wordSchema = new mongoose.Schema({
     englishWord: String,
@@ -34,11 +46,12 @@ module.exports = function (app) {
     
 
     app.get('/', function (req, res) {
-        req.session.email = "admin@admin.com";
-        req.session.password = "admin";
-        req.session.type = 1;
         if (req.session.email) {
-            Word.find({}, function (err, data) {
+            
+            if(!req.session.type){
+                res.redirect('/memorize');
+            }else{
+                WordsToMemorize.find({userEmail:"admin@admin.com"}, function (err, data) {
                 if (err) throw err;
                 //res.send(data);
                 res.render('index', {
@@ -47,6 +60,7 @@ module.exports = function (app) {
                     session:req.session
                 });
             });
+        }
         } else {
             res.redirect('/login');
         }
@@ -55,13 +69,13 @@ module.exports = function (app) {
     app.delete('/delete/:id', function(req,res){
         console.log();
         //delete item from the view and add it to mongoDb
-        Word.find({_id:req.params.id}).remove(function(err, data){
+        WordsToMemorize.find({_id:req.params.id,userEmail:'admin@admin.com'}).remove(function(err, data){
             if(err) throw err;
             res.json(data);
         });
     });
     app.post('/', urlEncodedParser, function (req, res) {
-        Word(req.body).save(function (err, data) {
+        WordsToMemorize(req.body).save(function (err, data) {
             if (err) throw err;
             res.json(data);
         });
@@ -70,7 +84,7 @@ module.exports = function (app) {
         res.render('about');
     });
     app.get('/logout', function (req, res) {
-        console.log(req.session.email+"Çıkmaya çalıştı");
+        console.log(req.session.email+" Çıkmaya çalıştı");
         req.session.email = null;
         req.session.password = null;
         res.redirect('/login');

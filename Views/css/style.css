@@ -171,3 +171,4 @@ form .input-field{
 .title-color{
   background: var(--title) !important;
 }
+.selectedCard { background-color: powderblue !important; }

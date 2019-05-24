@@ -39,7 +39,11 @@ $('form').on('submit', function () {
     englishWord: $('#englishWord').val(),
     turkishWord: $('#turkishWord').val(),
     type: $('#type').val(),
-    sentence: $('#sampleSentence').val()
+    sentence: $('#sampleSentence').val(),
+    target:'',
+    userEmail:'admin@admin.com',
+    status:0,
+    date:null
   };
   $.ajax({
     type: 'POST',

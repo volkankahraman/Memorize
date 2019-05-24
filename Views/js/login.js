@@ -1,3 +1,5 @@
+
+
 $("#registerPanel").hide();
 $('#loginspinner').hide();
 $('#registerspinner').hide();
@@ -78,3 +80,21 @@ $('form#registerform').on('submit', function () {
 //         }, 1000);
 // });
 var isLoginMenu = true;
+$('#register').click(function(){
+    if(isLoginMenu){
+        $('#loginPanel').addClass("rotate-reverse");
+        setTimeout(function() {
+            $('#loginPanel').hide();
+            $('#registerPanel').show();
+            $(this).text("Giriş Yap");
+        }, 700);
+        isLoginMenu= false;
+    }else{
+        $('#loginPanel').addClass("rotate-reverse");
+        setTimeout(function() {
+            $('#loginPanel').show();
+            $('#registerPanel').hide();
+            $(this).text("Üye Ol");
+        }, 700);
+    }
+});

@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Memorize</title>
+</head>
+
+<body class="grey lighten-4">
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <span class="left">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+            <a class="brand-logo" href="#"> &nbsp;Memorize</a>
+        </div>
+    </nav>
+
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Menu</a></li>
+        <li><a href="/" class="waves-effect"><i class="material-icons">home</i> Anasayfa</a></li>
+        <li><a href="/about" class="waves-effect"><i class="material-icons">assignment</i> Hakkında</a></li>
+        <li><a href="/logout" class="waves-effect"><i class="material-icons">backspace</i> Çıkış Yap</a></li>
+    </ul>
+    </div>
+    <div class="Words container grey-text text-darken-1">
+        <class class="row">
+            <h4>İstatistiklerim</h4>
+            <select id="type">
+                <option value="" disabled ><span style="color: gray">Yıl Seçin:</span>
+                </option>
+                <option value="2019" selected>2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+            </select>
+            <label>Yıl</label>
+            <div id="container" style="width: 100%; height: 75%"></div>
+        </class>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('select').formSelect();
+        const menus = document.querySelectorAll('.side-menu');
+        M.Sidenav.init(menus, {
+        edge: 'left'
+        });
+        });
+        
+        <% var ocak = 0,subat =0,mart = 0,nisan= 0,mayis = 0,haziran =0,temmuz=0,agustos=0,eylul=0,ekim= 0,kasim =0,aralik=0;
+        for(var i=0; i < data.length; i++){ 
+            var date =data[i].date;
+            var ay = date.getMonth();
+            
+            switch (ay) {
+            case 0:
+            ocak++;
+            break;
+            case 1:
+            subat++;
+            break;
+            case 2:
+            mart++;
+            break;
+            case 3:
+            nisan++;
+            break;
+            case 4:
+            mayis++;
+            break;
+            case 5:
+            haziran++;
+            break;
+            case 6:
+            temmuz++;
+            break;
+            case 7:
+            agustos++;
+            break;
+            case 8:
+            eylul++;
+            break;
+            case 9:
+            ekim++;
+            break;
+            case 10:
+            kasim++;
+            break;
+            case 11:
+            aralik++;
+            break;
+            }
+            %>
+        <% } %>
+
+        var data = {
+            header: ["Ay", "Bilinen sayısı"],
+            rows: [
+                ["Ocak", <%= ocak %>],
+                ["Şubat",<%= subat%>],
+                ["Mart",<%= mart%>],
+                ["Nisan",<%= nisan%>],
+                ["Mayıs",<%= mayis%>],
+                ["Haziran",<%= haziran%>],
+                ["Temmuz",<%= temmuz%>],
+                ["Ağustos",<%= agustos%>],
+                ["Eylül",<%=eylul%>],
+                ["Ekim",<%=ekim%>],
+                ["Kasım",<%=kasim%>],
+                ["Aralık",<%=aralik%>],
+
+            ]}
+            anychart.onDocumentReady(function() {
+                var chart = anychart.bar();
+ 
+                // add the data
+                chart.data(data);
+                chart.title("");
+                chart.container('container');
+                chart.draw();
+            });
+    </script>
+</body>
+
+</html>

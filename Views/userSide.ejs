@@ -1,0 +1,156 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Memorize</title>
+</head>
+
+<body class="grey lighten-4">
+    <div class="fixed-action-btn hide">
+        <a class="btn-floating btn-large title-color pulse" id="btnSend">
+            <i class="large material-icons">send</i>
+        </a>
+    </div>
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <span class="left">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+            <a class="brand-logo" href="#"> &nbsp;Memorize</a>
+        </div>
+    </nav>
+    <center>
+        <h5>
+            <%= (target == null &&session != null) ? "Hoşgeldin "+session.email.split("@")[0] : ''; %></h5>
+    </center>
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">Menu</a></li>
+        <li><a href="/" class="waves-effect"><i class="material-icons">home</i> Anasayfa</a></li>
+        <li><a href="/statistics" class="waves-effect"><i class="material-icons">equalizer</i> İstatistiklerim</a></li>
+        <li><a href="/about" class="waves-effect"><i class="material-icons">assignment</i> Hakkında</a></li>
+        <li><a href="/logout" class="waves-effect"><i class="material-icons">backspace</i> Çıkış Yap</a></li>
+    </ul>
+    </div>
+    <div class="Words container grey-text text-darken-1">
+
+
+        <class class="row">
+            <% if(target == null) { %>
+            <div class="row"><a href="/englishWords" class="btn-large waves-effect title-color" id="showEnglish"
+                    style="width: 100%">İngilizce Sözcük Öğren</a> </div>
+            <div class="row"><a href="/turkishWords" class="btn-large waves-effect" id="showTurkish"
+                    style="width: 100%;background-color: #43A047">Türkçe Sözcük Öğren</a></div>
+            <div class="row"><a href="/learningWords" class="btn-large waves-effect" id="showHaslearning"
+                    style="width: 100%;background-color: #546E7A">Öğrenmekte Olduğum Sözcükler</a></div>
+            <div class="row"><a href="/learnedWords" class="btn-large waves-effect red" id="showlearned"
+                    style="width: 100%">Öğrendiğim Sözcükler</a></div>
+    </div> <% }%>
+    <% if(target=="english") { %>
+        <h3><b><a href="/" class="btn-floating waves-effect waves-light title-color" style="margin-bottom: 10px;">
+                    <i class="material-icons">arrow_back</i>
+                </a> İngilizceye göre Sözcükler</b></h3>
+    <% }%>
+    <% if(target=="turkish") { %>
+        <h3><b><a href="/" class="btn-floating waves-effect waves-light title-color" style="margin-bottom: 10px;">
+                    <i class="material-icons">arrow_back</i>
+                </a> Türkçeye göre Sözcükler</b></h3>
+    <% }%>
+    
+    <% if(target=="learnedWords") { %>
+    <h3><b><a href="/" class="btn-floating waves-effect waves-light title-color" style="margin-bottom: 10px;">
+                <i class="material-icons">arrow_back</i>
+            </a> Öğrendiğin Sözcükler</b></h3>
+      <%  if(data[0] == null){ %>
+    <center><img src="img/noRecord.png" width="360" />
+        <h5>Henüz öğrendiğiniz bir sözcük yok.<p> Uygulamayı ziyaret etmeye devam edin.</h5>
+    </center><% } } %>
+
+    <% if(target=="learningWords") { %>
+    <h3><a href="/" class="btn-floating waves-effect waves-light title-color" style="margin-bottom: 10px;">
+            <i class="material-icons ">arrow_back</i>
+        </a> <b>Öğrenmekte Olduğun Sözcükler</b></h3>
+        <% if(data[0] == null){ %>
+    <center><img src="img/noRecord.png" width="360" />
+        <h5>Henüz öğrenmekte olduğunuz bir sözcük yok.<p></p>Hemen sözcükleri seçerek başlayabilirsiniz.</h5>
+    </center>
+    <% }else{ %>
+        <h6>Bugün tekrarlaman gereken sözcük(ler):</h6>
+    <% }} %>
+    <% for(var i=0; i < data.length; i++){
+        var visible =true;
+        if(data[i].userEmail != "admin@admin.com")
+                visible =false;
+        if((data[i].userEmail == "admin@admin.com" || data[i].userEmail == session.email) ){
+        for(var j=0; j < data.length; j++){
+            if(data[i].userEmail == "admin@admin.com" && data[j].userEmail == session.email){
+                if(data[i].englishWord === data[j].englishWord){
+                    visible =false;
+                }
+            } 
+            
+        }
+        if(!(target=="english" || target=="turkish"))
+            visible = true;
+    %>
+    <% 
+    if(target == "learningWords"){ 
+        var res = Math.abs(data[i].date - new Date()) / 1000;
+        var days = Math.floor(res / 86400);
+        var level = 0;
+        if(days>=1 && days < 7){ // İlk gün ezberleme
+            level = 1;
+        }else if(days>=7 && days < 30){
+            level=2;
+        }
+        else if(days>=30 && days < 360){
+            level=3;
+        }
+        else if(days>=360){
+            level=4
+        }
+        if(data[i].status!=level)
+            visible=false;
+     } 
+    if(visible){ %>
+    <div class="col s12 m6 l4">
+        
+        <div class="card-panel word">
+            <div class="word-details">
+                <div class="englishWord <%=(target=='english' || data[i].target=='english')? '':'hide'%>"><b>Sözcük :</b>
+                    <%= (data[i].englishWord != null) ? data[i].englishWord.charAt(0).toUpperCase()+ data[i].englishWord.slice(1) : '' %>
+                </div>
+                <div class="turkishWord <%=(target=='turkish'|| data[i].target=='turkish')? '':'hide'%>"><b>Sözcük
+                        :</b><%= (data[i].englishWord != null) ? data[i].turkishWord.charAt(0).toUpperCase()+ data[i].turkishWord.slice(1): ''  %></div>
+                <div class="type"><b>Tip :</b> <%= (data[i].englishWord != null) ? data[i].type: ''  %></div>
+                <div class="sampleSentence <%=(target=='learningWords')? 'hide':''%>"> <b>Cümle:
+                    </b><%- (data[i].englishWord != null) ? data[i].sentence: ''  %></div>
+                <span class="id" id="<%= (data[i].englishWord != null) ? data[i]._id : ''%>"></span>
+                <span class="level id" id="<%= level %>" ></span>
+            </div>
+            <a class="btn-floating btn-large waves-effect waves-light title-color"
+                onclick="read('<%- (target == 'turkish') ? data[i].turkishWord: data[i].englishWord %>','<%- (target == 'turkish') ? 'tr-TR': 'en-US'  %>')"><i class="material-icons">play_arrow</i></a>
+        </div>
+    </div>
+    <% }}} %>
+    </class>
+    </div>
+
+    <script src="js/userSide.js"></script>
+    <script>
+        var pageCount = "<%=pageCount%>";
+        var target = "<%=(target)? target:'null'%>";
+    </script>
+</body>
+
+</html>
