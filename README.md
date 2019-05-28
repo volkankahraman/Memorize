@@ -1,6 +1,7 @@
 # Memorize
 https://yazilimyapimi.herokuapp.com/
-![logo](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/logo.png)
+
+<img src="https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/logo.png" alt="logo" />
 ## Hakkında
 Memorize isimli bu proje, Yazılım Yapımı dönem projesi olarak Emin Boradağ'ın
     isterlerine uygun olarak hazırlanmıştır.
@@ -18,7 +19,7 @@ Sözcükler eklenirken sözcükler ile ilgili aşşağıdaki bilgiler gerekmekte
 
 Proje geliştirilirken <a href="https://materializecss.com/">Materialize Css</a> Framework'ü
     ve <a href="https://nodejs.org/">Node Js</a> Platformunun Express kütüphanesinden yararlanılmıştır.
-![Screenshot 1](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot1.png)
-![Screenshot 2](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot2.png)
-![Screenshot 3](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot3.png)
-![Screenshot 4](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot4.png)
+<img src="https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot1.png" alt="Screenshot 1" width="405"/>
+<img src="https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot2.png" alt="Screenshot 2" width="405"/>
+<img src="https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot3.png" alt="Screenshot 3" width="405"/>
+<img src="https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/Screenshot4.png" alt="Screenshot 4" width="405"/>
