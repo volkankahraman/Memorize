@@ -1,7 +1,8 @@
 # Memorize
-
-![logo](https://raw.githubusercontent.com/volkankahraman/Memorize/master/Pictures/logo.png)
-
+<center>
+    <img src="Pictures/logo.png" alt="logo" />
+<center>
+    
 https://yazilimyapimi.herokuapp.com/
 ## Hakkında
 Memorize isimli bu proje, Yazılım Yapımı dönem projesi olarak Emin Boradağ'ın
