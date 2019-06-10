@@ -1,9 +1,10 @@
 # Memorize
-<center>
-    <img src="Pictures/logo.png" alt="logo" />
-<center>
+
+<p align="center">
+    <img src="Pictures/logo.png" alt="logo"> 
+</p>
     
-https://yazilimyapimi.herokuapp.com/
+Link: https://yazilimyapimi.herokuapp.com/
 ## Hakkında
 Memorize isimli bu proje, Yazılım Yapımı dönem projesi olarak Emin Boradağ'ın
     isterlerine uygun olarak hazırlanmıştır.
